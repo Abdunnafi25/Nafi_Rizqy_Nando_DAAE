@@ -64,7 +64,7 @@ int isNodePresent(struct node *next, int A, int B, int wtrA, int wtrB){
     return(0);
 }
 
-struct node* createNode(struct node *current, int A, int B, int f1, int f2){
+struct node* createNode(struct node *current, int A, int B, int wtrA, int wtrB){
     int d;
     struct node *next;
     next = (struct node*)malloc(sizeof(struct node));
