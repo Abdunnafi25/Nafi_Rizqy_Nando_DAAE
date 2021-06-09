@@ -126,8 +126,57 @@ struct node* createNode(struct node *current, int A, int B, int wtrA, int wtrB){
     return NULL;
 }
 
-void createGraph(int A, int B, int f1, int f2){
+void createGraph(int A, int B, int wtrA, int wtrB){
+    int flag1, flag2;
+    struct node *tempLeft, *tempRight;
+    root  = (struct node*)malloc(sizeof(struct node));
+    root->x = 0;
+	root->y = 0;
+	root->next = NULL;
+
+    left = (struct node*)malloc(sizeof(struct node));
+    left->x = 0;
+	left->y = B;
+	left->next = NULL;
+
+    right = (struct node*)malloc(sizeof(struct node));
+    right->x = A;
+	right->y = 0;
+	right->next = NULL;
+
+    tempLeft = left;
+    tempRight = right;
+
+    while(1){
+        flag1 = 0;
+		flag2 = 0;
+
+        if((tempLeft->x != wtrA) || (tempLeft->y != wtrB)){
+            tempLeft->next = createNode(tempLeft, A, B, wtrA, wtrB);
+            tempLeft = tempLeft->next;
+            tempLeft->next = NULL;
+            flag1 = 1;
+        }
+
+        if((tempRight->x != wtrA) || (tempRight->y != wtrB)){
+            tempRight->next = createNode(tempRight, A, B, wtrA, wtrB);
+            tempRight = tempRight->next;
+            tempRight->next = NULL;
+            flag2 = 1;
+        }
+
+        if((flag1 == 0) && (flag2 == 0))
+            break;
+    }
 }
 
 void main(){
+    int jugA, jugB, goalA, goalB;
+    printf("Welcome to the Water Jug Problem Solver\n");
+    printf("\nInput the capacity of the water jug A and B: ");
+    scanf("%d %d",&jugA,&jugB);
+    printf("\nInput the goal water volume in jug A and B: ");
+    scanf("%d %d",&goalA,&goalB);
+    createGraph(jugA, jugB, goalA, goalB);
+    DFS();
 }
