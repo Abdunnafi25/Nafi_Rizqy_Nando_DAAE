@@ -65,3 +65,4 @@ Fill the jug B with the jug A until its empty (wtrA > 0 and wtrB < jugB), wtrA m
 
 
 
+We all contribute to this project and divided the work equally.
